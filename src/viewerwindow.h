@@ -5,6 +5,7 @@
 
 #include "imagelist.h"
 
+#include "base/timer.h"
 #include "ui/geometry.h"
 #include "ui/window.h"
 
@@ -61,6 +62,11 @@ public:
     void rotateRight();
     void previous();
     void next();
+    // Steps through the folder every few seconds until stopped.
+    void toggleSlideshow();
+    bool slideshowActive() const { return m_slideshow; }
+    void toggleFullScreen();
+    bool isFullScreen() const { return m_fullScreen; }
     // Escape and the window's close button: leaves the application.
     void close();
 
@@ -115,7 +121,10 @@ private:
     bool m_pendingProbe = false;
     bool m_closed = false;
     bool m_fitUpdateScheduled = false;
+    bool m_slideshow = false;
+    bool m_fullScreen = false;
 
+    Lingmo::base::Timer m_slideshowTimer;
     std::unique_ptr<Lingmo::ui::FileChooser> m_chooser;
     std::unique_ptr<Lingmo::ui::Toast> m_toast;
 };

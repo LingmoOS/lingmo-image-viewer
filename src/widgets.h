@@ -126,6 +126,8 @@ public:
     // the zoom is a step of its own.
     void setMode(bool fit, bool actual);
     void setZoomText(const std::string& text);
+    void setSlideshow(bool active);
+    void setFullScreen(bool fullScreen);
 
     std::function<void()> onOpen;
     std::function<void()> onPrevious;
@@ -136,6 +138,8 @@ public:
     std::function<void()> onZoomOut;
     std::function<void()> onRotateLeft;
     std::function<void()> onRotateRight;
+    std::function<void()> onSlideshow;
+    std::function<void()> onFullScreen;
 
 protected:
     void paint(Lingmo::ui::Painter& painter) override;
@@ -150,6 +154,8 @@ private:
     ToolButton* m_zoomIn;
     ToolButton* m_rotateLeft;
     ToolButton* m_rotateRight;
+    ToolButton* m_slideshow = nullptr;
+    ToolButton* m_fullScreen = nullptr;
     Lingmo::ui::Label* m_zoom;
     bool m_hasImage = false;
 };

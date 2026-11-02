@@ -21,6 +21,7 @@
 #include "base/paths.h"
 
 #include <algorithm>
+#include <chrono>
 #include <cmath>
 #include <filesystem>
 #include <poll.h>
@@ -61,6 +62,11 @@ ViewerWindow::ViewerWindow()
     m_window.onCloseRequested = [this] { close(); };
     buildInterface();
     wireShortcuts();
+    m_slideshowTimer.setInterval(std::chrono::milliseconds(3000));
+    m_slideshowTimer.onTimeout = [this] {
+        if (m_slideshow && !m_closed && m_list.size() > 1)
+            next();
+    };
     m_toast = std::make_unique<Toast>(&m_window);
     applyChrome();
     m_surface->setState(ImageSurface::State::Empty);
@@ -102,6 +108,8 @@ void ViewerWindow::buildInterface()
     m_toolbar->onZoomOut = [this] { zoomOut(); };
     m_toolbar->onRotateLeft = [this] { rotateLeft(); };
     m_toolbar->onRotateRight = [this] { rotateRight(); };
+    m_toolbar->onSlideshow = [this] { toggleSlideshow(); };
+    m_toolbar->onFullScreen = [this] { toggleFullScreen(); };
 
     ImageView* image = m_surface->imageView();
     image->setName("imageView");
@@ -162,6 +170,8 @@ void ViewerWindow::wireShortcuts()
 
     m_window.addShortcut(NoModifier, key::letter('r'), [this] { rotateRight(); });
     m_window.addShortcut(ShiftModifier, key::letter('r'), [this] { rotateLeft(); });
+    m_window.addShortcut(NoModifier, key::Space, [this] { toggleSlideshow(); });
+    m_window.addShortcut(NoModifier, 0xffc8, [this] { toggleFullScreen(); });
 }
 
 void ViewerWindow::openChooser()
@@ -220,6 +230,10 @@ bool ViewerWindow::open(const std::string& path)
             m_fileSize = 0;
     }
     m_list.setDirectory(imageviewer::directoryOf(absolute), absolute);
+    if (m_slideshow && m_list.size() < 2) {
+        m_slideshow = false;
+        m_slideshowTimer.stop();
+    }
     m_rotation = 0;
     m_mode = Mode::Fit;
     m_scale = 1;
@@ -318,6 +332,8 @@ void ViewerWindow::applyChrome()
     m_toolbar->setHasNeighbours(m_list.size() > 1);
     m_toolbar->setMode(m_mode == Mode::Fit, m_mode == Mode::Actual);
     m_toolbar->setZoomText(m_haveSize ? imageviewer::formatZoom(m_scale) : "—");
+    m_toolbar->setSlideshow(m_slideshow);
+    m_toolbar->setFullScreen(m_fullScreen);
 
     m_window.setTitle(name.empty() ? std::string(tr("Image Viewer")) : name + " — " + tr("Image Viewer"));
 }
@@ -477,11 +493,39 @@ void ViewerWindow::next()
         open(m_list.currentFile());
 }
 
+void ViewerWindow::toggleSlideshow()
+{
+    if (m_slideshow) {
+        m_slideshow = false;
+        m_slideshowTimer.stop();
+        m_toolbar->setSlideshow(false);
+        showMessage(tr("Slideshow stopped"));
+        return;
+    }
+    if (m_list.size() < 2) {
+        showMessage(tr("Open a folder with more than one picture"));
+        return;
+    }
+    m_slideshow = true;
+    m_slideshowTimer.start();
+    m_toolbar->setSlideshow(true);
+    showMessage(tr("Slideshow started"));
+}
+
+void ViewerWindow::toggleFullScreen()
+{
+    m_fullScreen = !m_fullScreen;
+    m_window.setFullScreen(m_fullScreen);
+    m_toolbar->setFullScreen(m_fullScreen);
+}
+
 void ViewerWindow::close()
 {
     if (m_closed)
         return;
     m_closed = true;
+    m_slideshow = false;
+    m_slideshowTimer.stop();
     if (Application* application = Application::instance())
         application->quit();
 }

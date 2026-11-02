@@ -373,6 +373,22 @@ ToolBar::ToolBar()
             onRotateRight();
     };
 
+    addChild<Separator>();
+    m_slideshow = addChild<ToolButton>();
+    m_slideshow->setText(tr("Slideshow"));
+    m_slideshow->setToolTip(tr("Play the folder as a slideshow (Space)"));
+    m_slideshow->onClicked = [this] {
+        if (onSlideshow)
+            onSlideshow();
+    };
+    m_fullScreen = addChild<ToolButton>();
+    m_fullScreen->setText(tr("Full Screen"));
+    m_fullScreen->setToolTip(tr("Enter or leave full screen (F11)"));
+    m_fullScreen->onClicked = [this] {
+        if (onFullScreen)
+            onFullScreen();
+    };
+
     setHasImage(false);
     setHasNeighbours(false);
     setMode(true, false);
@@ -393,6 +409,7 @@ void ToolBar::setHasNeighbours(bool hasNeighbours)
 {
     m_previous->setEnabled(hasNeighbours);
     m_next->setEnabled(hasNeighbours);
+    m_slideshow->setEnabled(hasNeighbours);
 }
 
 void ToolBar::setMode(bool fit, bool actual)
@@ -404,6 +421,16 @@ void ToolBar::setMode(bool fit, bool actual)
 void ToolBar::setZoomText(const std::string& text)
 {
     m_zoom->setText(text);
+}
+
+void ToolBar::setSlideshow(bool active)
+{
+    m_slideshow->setChecked(active);
+}
+
+void ToolBar::setFullScreen(bool fullScreen)
+{
+    m_fullScreen->setChecked(fullScreen);
 }
 
 void ToolBar::paint(Painter& painter)

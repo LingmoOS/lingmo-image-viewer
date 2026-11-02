@@ -6,7 +6,8 @@ A small, fast image viewer for Lingmo OS, written with the native Lingmo SDK.
 
 - Open pictures from the command line or the file chooser.
 - Fit to window, actual size, zoom and rotate.
-- Step through the other pictures in the same folder.
+- Step through the other pictures in the same folder, or play a slideshow.
+- Enter full screen from the toolbar or F11.
 - Light and dark themes.
 
 ## Build
