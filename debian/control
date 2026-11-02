@@ -1,0 +1,18 @@
+﻿Source: lingmo-image-viewer
+Section: graphics
+Priority: optional
+Maintainer: Lingmo OS Team <team@lingmo.org>
+Build-Depends: cmake,
+               debhelper-compat (= 13),
+               lingmo-sdk-dev,
+               pkg-config
+Standards-Version: 4.7.2
+Homepage: https://github.com/LingmoOS/lingmo-image-viewer
+
+Package: lingmo-image-viewer
+Architecture: any
+Depends: lingmo-sdk-dev,
+         ${misc:Depends},
+         ${shlibs:Depends}
+Description: Lingmo OS Image Viewer
+ View, zoom, rotate and step through pictures.

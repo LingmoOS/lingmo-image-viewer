@@ -1,0 +1,20 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: zh_CN\n"
+
+#: src/viewerwindow.cpp
+msgid "Image Viewer"
+msgstr "图片查看器"
+
+#: src/viewerwindow.cpp
+msgid "Open Image"
+msgstr "打开图片"
+
+#: src/viewerwindow.cpp
+msgid "Image Files"
+msgstr "图片文件"
+
+#: src/viewerwindow.cpp
+msgid "No pictures in this folder"
+msgstr "此文件夹中没有图片"

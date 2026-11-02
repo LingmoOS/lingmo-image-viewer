@@ -1,0 +1,15 @@
+# SPDX-FileCopyrightText: 2026 LingmoOS Contributors
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+[Desktop Entry]
+Version=1.0
+Name=Image Viewer
+Comment=View and browse pictures
+Exec=lingmo-image-viewer %U
+Icon=lingmo-image-viewer
+Terminal=false
+Type=Application
+Categories=Graphics;Viewer;Photography;
+Keywords=Image;Picture;Photo;Viewer;Gallery;
+MimeType=image/png;image/jpeg;image/jpg;image/pjpeg;image/gif;image/webp;image/bmp;image/x-bmp;image/tiff;image/heic;image/heif;image/avif;image/jxl;image/svg+xml;image/x-icon;image/vnd.microsoft.icon;image/x-xbitmap;image/x-tga;
+StartupNotify=true
