@@ -18,3 +18,20 @@ msgstr "图片文件"
 #: src/viewerwindow.cpp
 msgid "No pictures in this folder"
 msgstr "此文件夹中没有图片"
+
+#: src
+msgid "Slideshow"
+msgstr ""
+
+#: src
+msgid "Full Screen"
+msgstr ""
+
+#: src
+msgid "Slideshow started"
+msgstr ""
+
+#: src
+msgid "Slideshow stopped"
+msgstr ""
+
