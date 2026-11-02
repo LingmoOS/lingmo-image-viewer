@@ -1,4 +1,4 @@
-﻿# lingmo-image-viewer
+# lingmo-image-viewer
 
 A small, fast image viewer for Lingmo OS, written with the native Lingmo SDK.
 
