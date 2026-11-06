@@ -1,6 +1,13 @@
 msgid ""
 msgstr ""
+"Project-Id-Version: lingmo-image-viewer\n"
+"PO-Revision-Date: 2026-11-07 12:00+0800\n"
+"Last-Translator: Lingmo OS Team <team@lingmo.org>\n"
+"Language-Team: Simplified Chinese\n"
+"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "Language: zh_CN\n"
 
 #: src/viewerwindow.cpp
@@ -21,17 +28,98 @@ msgstr "此文件夹中没有图片"
 
 #: src
 msgid "Slideshow"
-msgstr ""
+msgstr "幻灯片"
 
 #: src
 msgid "Full Screen"
-msgstr ""
+msgstr "全屏"
 
 #: src
 msgid "Slideshow started"
-msgstr ""
+msgstr "幻灯片已开始"
 
 #: src
 msgid "Slideshow stopped"
-msgstr ""
+msgstr "幻灯片已停止"
 
+
+msgid "Loading image…"
+msgstr "正在加载图片…"
+
+msgid "Drop to open"
+msgstr "拖放以打开"
+
+msgid "No image open"
+msgstr "尚未打开图片"
+
+msgid "Drag and drop pictures here, or press Ctrl+O"
+msgstr "将图片拖放到此处，或按 Ctrl+O"
+
+msgid "Open Another Image"
+msgstr "打开其他图片"
+
+msgid "All Files"
+msgstr "所有文件"
+
+msgid "Choose another folder or open a picture."
+msgstr "请选择其他文件夹或打开一张图片。"
+
+msgid "Can't open this image"
+msgstr "无法打开此图片"
+
+msgid "The file may be damaged or in an unsupported format."
+msgstr "文件可能已损坏，或其格式不受支持。"
+
+msgid "Could not rotate this image"
+msgstr "无法旋转此图片"
+
+msgid "Open a folder with more than one picture"
+msgstr "请打开包含多张图片的文件夹"
+
+msgid "Open"
+msgstr "打开"
+
+msgid "Fit"
+msgstr "适应窗口"
+
+msgid "1:1"
+msgstr "1:1"
+
+msgid "Open an image (Ctrl+O)"
+msgstr "打开图片（Ctrl+O）"
+
+msgid "Previous image (Left)"
+msgstr "上一张图片（左方向键）"
+
+msgid "Next image (Right)"
+msgstr "下一张图片（右方向键）"
+
+msgid "Fit the picture to the window (0)"
+msgstr "使图片适应窗口（0）"
+
+msgid "Show the picture at its own size (1)"
+msgstr "按原始大小显示图片（1）"
+
+msgid "Zoom out (-)"
+msgstr "缩小（-）"
+
+msgid "Zoom in (+)"
+msgstr "放大（+）"
+
+msgid "Rotate anticlockwise (Shift+R)"
+msgstr "逆时针旋转（Shift+R）"
+
+msgid "Rotate clockwise (R)"
+msgstr "顺时针旋转（R）"
+
+msgid "Play the folder as a slideshow (Space)"
+msgstr "以幻灯片播放文件夹中的图片（空格键）"
+
+msgid "Enter or leave full screen (F11)"
+msgstr "进入或退出全屏（F11）"
+
+msgid "View and browse pictures"
+msgstr "查看和浏览图片"
+
+msgid "Image;Picture;Photo;Viewer;Gallery;"
+msgstr "图像;图片;照片;查看器;图库;"
